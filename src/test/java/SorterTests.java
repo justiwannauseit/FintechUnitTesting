@@ -7,24 +7,32 @@ public class SorterTests {
 
     @Test
     public void simpleTest() {
-        int[] exampleArray = {43, 5, 6, 14, 199, 19, -1};
-        int[] sortedArray = {-1, 5, 6, 14, 19, 43, 199};
+        int[] exampleArray = {43, 5, 6, 14, 199, 19, 1};
+        SorterProgram.sort(exampleArray);
+        Assertions.assertNotNull(exampleArray);
+    }
+
+    @Test
+    public void sortedArrayTest() {
+        int[] exampleArray = {1,2,3,4,5,6};
+        int[] sortedArray = {1,2,3,4,5,6};
+        SorterProgram.sort(exampleArray);
+        Assertions.assertArrayEquals(sortedArray, exampleArray);
+    }
+
+
+    @Test
+    public void positiveOnlyArrayTest() {
+        int[] exampleArray = {4, 5, 18, 144};
+        int[] sortedArray = {4,5,18,144};
         SorterProgram.sort(exampleArray);
         Assertions.assertArrayEquals(sortedArray, exampleArray);
     }
 
     @Test
-    public void evenLengthArrayTest() {
-        int[] exampleArray = {-4, -5, 18, -144};
-        int[] sortedArray = {-144, -5, -4, 18};
-        SorterProgram.sort(exampleArray);
-        Assertions.assertArrayEquals(sortedArray, exampleArray);
-    }
-
-    @Test
-    public void oddLengthArrayTest() {
-        int[] exampleArray = {-4, -5, 18, -144, 1};
-        int[] sortedArray = {-144, -5, -4, 1, 18};
+    public void negativeOnlyArrayTest() {
+        int[] exampleArray = {-4, -5, -2, -144, -1};
+        int[] sortedArray = {-144,-5,-4,-2,-1};
         SorterProgram.sort(exampleArray);
         Assertions.assertArrayEquals(sortedArray, exampleArray);
     }
@@ -32,20 +40,29 @@ public class SorterTests {
 
     @Test
     public void standardArraySortingTest() {
-        int[] exampleArray = {-1, 2, -8, 77, -458, -654312, 456456, 15, -2, 0, 2, 8, -35656, 54456, -84, 6511, 3212, 987498, -5566};
-        int[] exampleArrayClone = {-1, 2, -8, 77, -458, -654312, 456456, 15, -2, 0, 2, 8, -35656, 54456, -84, 6511, 3212, 987498, -5566};
+        int[] exampleArray = {8000,15,39,1,-7};
+        int[] exampleArrayClone = {-7,1,15,39,8000};
         SorterProgram.sort(exampleArray);
         Arrays.sort(exampleArrayClone);
         Assertions.assertArrayEquals(exampleArrayClone, exampleArray);
-
     }
 
     @Test
-    public void checkTypeArrayTest() {
-        int[] exampleArray = {0,1,8,3};
-        String [] sortedArray = {"0","1","3","8"};
+    public void repeatingArraySortingTest() {
+        int[] exampleArray = {1, 2, 3, 1, 2, 3, 1, 5, 6, 1, 1, 1};
+        int[] exampleArrayClone = {1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 5, 6,};
         SorterProgram.sort(exampleArray);
-        Assertions.assertNotEquals(sortedArray, exampleArray);
+        Arrays.sort(exampleArrayClone);
+        Assertions.assertArrayEquals(exampleArrayClone, exampleArray);
     }
+
+    @Test
+    public void checkEmptyArrayTest(){
+        int[] exampleArray = {};
+        int[] sortedArray = {};
+        SorterProgram.sort(exampleArray);
+        Assertions.assertArrayEquals(sortedArray, exampleArray);
+    }
+
 
 }
