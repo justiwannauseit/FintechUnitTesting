@@ -50,7 +50,17 @@ public class SorterTests {
     @Test
     public void repeatingArraySortingTest() {
         int[] exampleArray = {1, 2, 3, 1, 2, 3, 1, 5, 6, 1, 1, 1};
-        int[] exampleArrayClone = {1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 5, 6,};
+        int[] exampleArrayClone = {1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 5, 6};
+        SorterProgram.sort(exampleArray);
+        Arrays.sort(exampleArrayClone);
+        Assertions.assertArrayEquals(exampleArrayClone, exampleArray);
+    }
+
+
+    @Test
+    public void identicalArraySortingTest() {
+        int[] exampleArray = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] exampleArrayClone = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         SorterProgram.sort(exampleArray);
         Arrays.sort(exampleArrayClone);
         Assertions.assertArrayEquals(exampleArrayClone, exampleArray);
